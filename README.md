@@ -53,7 +53,7 @@ Sau bài lab, bạn có thể:
    ```
 
    `check` kiểm và tự sửa CVAT. `setup` hỏi tài khoản CVAT của bạn, lấy bộ ảnh riêng của bạn (có sẵn trong repo, không cần mạng), tạo project `d04-keypoint` cùng hai task `persons-<ten>` và `faces-<ten>`, rồi in ra đường link mở job. macOS / Ubuntu: dùng `python3` thay cho `python`.
-3. Đổi tên file báo cáo `report/individual/MSSV_HoTen.md` thành MSSV và họ tên của bạn, ví dụ `report/individual/20241234_NguyenVanAn.md`.
+3. Đổi tên file báo cáo `report/individual/2A202603056-NguyenVietQuang.md` thành MSSV và họ tên của bạn, ví dụ `report/individual/20241234_NguyenVanAn.md`.
 4. **Mới dùng CVAT?** Xem trước [`docs/HUONG_DAN_BANG_HINH.md`](docs/HUONG_DAN_BANG_HINH.md): ảnh chụp từng bước, ảnh thật cho từng quy tắc.
 5. Đọc theo thứ tự: [`RULES.md`](RULES.md) → [`docs/GUIDELINE.md`](docs/GUIDELINE.md) → [`CHECKPOINTS.md`](CHECKPOINTS.md) → [`RUBRIC.md`](RUBRIC.md) → [`SUBMISSION.md`](SUBMISSION.md).
 6. Gán nhãn theo CP0 → CP3. Xong thì chạy `python lab.py export` (CP4): lệnh xuất 2 file nộp vào `src/exports/` và tự kiểm.

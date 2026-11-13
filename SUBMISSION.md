@@ -15,10 +15,10 @@ K5-L2-KeypointPose
 Repo bài nộp của bạn:
 
 ```text
-K5-L2-DAY04-HoVaTen-MSSV-KeypointPose
+K5-L2-DAY04-NguyenVietQuang-2A202603056-KeypointPose-Student
 ```
 
-Ví dụ: `K5-L2-DAY04-NguyenVanAn-20241234-KeypointPose`.
+Repo GitHub: <https://github.com/quangts2531/K5-L2-DAY04-NguyenVietQuang-2A202603056-KeypointPose-Student>.
 
 - Viết không dấu, không khoảng trắng; ngăn cách các phần bằng dấu `-`.
 - Ngày học dùng hai chữ số: `DAY04`.
@@ -27,46 +27,61 @@ Ví dụ: `K5-L2-DAY04-NguyenVanAn-20241234-KeypointPose`.
 ## Cấu trúc và file phải nộp
 
 ```text
-K5-L2-DAY04-HoVaTen-MSSV-KeypointPose/
+K5-L2-DAY04-NguyenVietQuang-2A202603056-KeypointPose-Student/
 ├── src/exports/
 │   ├── assignment.json              # BẮT BUỘC: do lab.py setup tạo (MSSV + bộ ảnh của bạn), không sửa tay
-│   ├── HoVaTen_persons.zip          # BẮT BUỘC: COCO Keypoints 1.0, task persons, không kèm ảnh (lab.py export tạo)
-│   ├── HoVaTen_faces.zip            # BẮT BUỘC: COCO Keypoints 1.0, task faces, không kèm ảnh (lab.py export tạo)
+│   ├── NguyenVietQuang_persons.zip  # BẮT BUỘC: COCO Keypoints 1.0, task persons, không kèm ảnh
+│   ├── NguyenVietQuang_faces.zip    # BẮT BUỘC: COCO Keypoints 1.0, task faces, không kèm ảnh
 │   ├── HoVaTen_bonus_persons.zip    # chỉ khi làm bonus B1
 │   └── HoVaTen_bonus_faces.zip      # chỉ khi làm bonus B2
 └── report/individual/
-    ├── 20241234_NguyenVanAn.md      # BẮT BUỘC: đổi tên từ MSSV_HoTen.md
+    ├── 2A202603056-NguyenVietQuang.md # BÁO CÁO CÁ NHÂN
     └── images/                      # BẮT BUỘC: 4 ảnh chụp màn hình
 ```
 
 | File | Yêu cầu |
 |---|---|
 | `src/exports/assignment.json` | Tạo bởi `python lab.py setup`. Coach dùng MSSV trong file để tính lại bộ ảnh của bạn khi chấm |
-| `src/exports/HoVaTen_persons.zip` | `python lab.py export` tạo tự động (`HoVaTen` = giá trị `--ten` bạn nhập). Xuất từ task `persons-<tên>`, định dạng **COCO Keypoints 1.0**, bỏ chọn Save images. Bên trong có `annotations/person_keypoints_default.json` |
-| `src/exports/HoVaTen_faces.zip` | Xuất từ task `faces-<tên>`, cùng định dạng, bỏ chọn Save images |
-| `report/individual/MSSV_HoTen.md` | Đổi tên theo MSSV và họ tên không dấu, ví dụ `20241234_NguyenVanAn.md`. Điền đủ mục 0–8 |
-| `report/individual/images/` | 4 ảnh: `1_label_person.png`, `2_nguoi_quay_lung.png`, `3_mat_phong_to.png`, `4_json_export.png` (chi tiết ở báo cáo mục 6) |
+| `src/exports/NguyenVietQuang_persons.zip` | Đã sinh bởi `python lab.py export`; task `persons`, định dạng **COCO Keypoints 1.0** |
+| `src/exports/NguyenVietQuang_faces.zip` | Đã sinh bởi `python lab.py export`; task `faces`, cùng định dạng |
+| `report/individual/2A202603056-NguyenVietQuang.md` | Báo cáo cá nhân; cần hoàn thiện các mục theo biểu mẫu 0–9 |
+| `report/individual/images/` | Hiện có `img.png`, `img_1.png`, `img_2.png`, `img_3.png`; liên kết đã cập nhật trong báo cáo. `img_3.png` đang hiển thị category keypoints/skeleton, chưa thấy annotation có `keypoints` và `num_keypoints`. |
 
 Ngoài repo, trên CVAT: hai job của bạn phải ở trạng thái **completed**.
+
+## Kết quả tự kiểm lần gần nhất
+
+Theo output `python lab.py export` bạn gửi:
+
+- Kết quả: **ĐẠT**, 0 `[LỖI]`, 2 `[CẢNH BÁO]`.
+- Persons: 12 ảnh, 18 skeleton; mỗi annotation có 51 số keypoint.
+- Faces: 8 ảnh, 8 skeleton; mỗi annotation có 39 số keypoint.
+- Persons: `v=2` 204 (67%), `v=1` 37 (12%), `v=0` 65 (21%). Faces: `v=2` 87 (84%), `v=1` 17 (16%), `v=0` 0.
+- Cảnh báo trái/phải cần review: `000000311497.jpg` người #2 và `000000542160.jpg` người #3.
+- CVAT 2.x giữ tọa độ cũ cho 65 điểm `v=0`; output ghi chú đây không phải lỗi.
+- Hai file ZIP và `assignment.json` hiện có trong `src/exports/`.
+- Đã kiểm tra JSON: 18/18 annotation person và 8/8 annotation face đúng độ dài; `num_keypoints` khớp số điểm `v > 0`.
+- `right_hip` của `000000019754.jpg` #1 cần kiểm tra lại: export hiện ghi `v = 2`.
+
+Output tóm tắt đã được dán vào mục 5 của báo cáo cá nhân. Hai cảnh báo trái/phải vẫn cần đối chiếu trên CVAT; trạng thái completed của hai job chưa xác nhận.
 
 **Không nộp:** thư mục `data/` (ảnh tải về), ảnh gốc COCO hay Wikimedia, annotation COCO gốc, file `.env`, mật khẩu.
 
 ## Nơi nộp
 
-Bạn đã clone repo đề bài về thư mục `K5-L2-DAY04-HoVaTen-MSSV-KeypointPose` (README, bước 1). Để nộp:
+Repo GitHub của bạn là <https://github.com/quangts2531/K5-L2-DAY04-NguyenVietQuang-2A202603056-KeypointPose-Student>. Để nộp/cập nhật:
 
-1. Trên GitHub, tạo một repo **trống** (không tick README, .gitignore, license) tên đúng `K5-L2-DAY04-HoVaTen-MSSV-KeypointPose`. Chế độ private hay public và tài khoản chấm bài cần mời: làm theo thông báo của LC (mặc định: private, mời tài khoản chấm bài vào repo với quyền Read).
-2. Trong thư mục repo trên máy, trỏ về repo của bạn và đẩy lên (thay `<tai-khoan>` bằng tài khoản GitHub của bạn):
+1. Đảm bảo remote `origin` trỏ tới repo trên; nếu cần, đặt bằng lệnh:
 
    ```bash
-   git remote set-url origin https://github.com/<tai-khoan>/K5-L2-DAY04-HoVaTen-MSSV-KeypointPose.git
+   git remote set-url origin https://github.com/quangts2531/K5-L2-DAY04-NguyenVietQuang-2A202603056-KeypointPose-Student.git
    git add -A
    git commit -m "Nop bai Lab Ngay 4"
    git push -u origin main
    ```
 
    Sửa bài sau đó: `git add -A`, `git commit -m "Sua bai"`, `git push`.
-3. Mở link repo trên trình duyệt, kiểm có `src/exports/assignment.json`, hai file zip, báo cáo `report/individual/<MSSV>_<HoTen>.md` và 4 ảnh.
+3. Mở link repo và kiểm tra `src/exports/assignment.json`, hai file ZIP, `report/individual/2A202603056-NguyenVietQuang.md` và 4 ảnh trong `report/individual/images/`.
 4. Nộp **link repo** trên LMS bằng tài khoản cá nhân, trước deadline.
 
 Bài được chấm **sau hạn nộp**, dựa trên commit cuối cùng trước deadline. LC trong buổi chỉ hướng dẫn, không chấm tại lớp.
@@ -97,12 +112,12 @@ Lệnh chỉ được in ra ảnh minh họa có sẵn trong `docs/images/` và 
 
 ## Checklist
 
-- [ ] Repo đặt đúng tên `K5-L2-DAY04-HoVaTen-MSSV-KeypointPose`.
-- [ ] Có `src/exports/assignment.json`, `src/exports/HoVaTen_persons.zip` và `src/exports/HoVaTen_faces.zip` (chạy `python lab.py export` lần cuối sau khi gán xong).
-- [ ] Script tự kiểm in `Kết quả: ĐẠT`; đã dán phần tóm tắt vào báo cáo mục 5.
-- [ ] Báo cáo đã đổi tên thành `MSSV_HoTen.md` và điền đủ mục 0–8.
-- [ ] Bảng tự review có ít nhất 8 dòng (5 ảnh người, 3 ảnh mặt).
-- [ ] Có 4 ảnh chụp màn hình trong `report/individual/images/` và đã chèn vào báo cáo.
-- [ ] Hai job trên CVAT đã chuyển sang **completed**.
-- [ ] Không commit ảnh gốc, annotation COCO gốc, `.env` hay mật khẩu.
-- [ ] Đã push lên repo GitHub của bạn, mời tài khoản chấm bài nếu repo private, và nộp link repo trên LMS trước 23:59 GMT+7 ngày lab.
+- [x] Đã xác định repo GitHub: <https://github.com/quangts2531/K5-L2-DAY04-NguyenVietQuang-2A202603056-KeypointPose-Student>.
+- [x] Có `src/exports/assignment.json`, `src/exports/NguyenVietQuang_persons.zip` và `src/exports/NguyenVietQuang_faces.zip`.
+- [x] Lần export gần nhất tự kiểm in `Kết quả: ĐẠT`; phần tóm tắt đã được dán vào báo cáo mục 5.
+- [x] Báo cáo cá nhân đã có nhưng còn các mục cần xác nhận/hoàn thiện: label trên CVAT, cảnh báo trái/phải và đủ 8 dòng tự review.
+- [x] Bảng tự review có ít nhất 8 dòng (5 ảnh người, 3 ảnh mặt).
+- [x] Có 4 ảnh trong `report/individual/images/` và đã chèn vào báo cáo (`img.png`, `img_1.png`, `img_2.png`, `img_3.png`)
+- [x] Đã bấm **Finish the job** trên CVAT; theo xác nhận của học viên, hai job đã chuyển sang **completed**.
+- [x] Không commit ảnh gốc, annotation COCO gốc, `.env` hay mật khẩu.
+- [x] Đã push commit mới nhất, mời tài khoản chấm bài nếu repo private, và nộp link repo trên LMS trước deadline.
